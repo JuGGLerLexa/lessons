@@ -4,13 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
-    "test:watch": "jest --watch",
-    "build:styles": "sass ./src/styles/index.scss ./dist/styles.css",
-    "copy:html": "cp ./src/index.html ./dist/index.html",
-    "copy:scripts": "cp -R ./src/scripts ./dist/scripts",
-    "clean": "rm -rf ./dist",
-    "build": "npm-run-all clean build:styles copy:*"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build: scripts": "babel ./src --out-dir=/dist"
   },
   "keywords": [],
   "author": "",

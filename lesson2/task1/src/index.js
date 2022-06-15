@@ -1,4 +1,4 @@
-import { printProfile } from './profile'
+import { printProfile } from './profile';
 
 const userData = {
     name: 'Tom',
@@ -8,6 +8,6 @@ const userData = {
 const profile = {
     ...userData,
     company: 'Gromcode',
-}
+};
 
-printProfile(profile)
+printProfile(profile);

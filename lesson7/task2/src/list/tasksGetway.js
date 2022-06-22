@@ -1,4 +1,4 @@
-const baseUrl = 'https://627a4e1373bad50685866f2c.mockapi.io/TodoList/';
+const baseUrl = 'https://6294ab7e63b5d108c190df45.mockapi.io/api/v1/TodoList';
 
 export const getTasksList = () => {
     return fetch(`${baseUrl}`).then(response => response.json()); //отримали масив задач які зберігаються на сервері

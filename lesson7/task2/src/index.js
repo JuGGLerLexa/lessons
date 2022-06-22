@@ -1,5 +1,5 @@
 import "core-js";
-import { initTodoListHandlers } from './list/todoList.js.js';
+import { initTodoListHandlers } from './list/todoList.js';
 import { renderTasks } from './list/renderer.js';
 import { getTasksList } from './list/tasksGetway.js';
 import { setItem } from './list/storage.js';

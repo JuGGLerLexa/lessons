@@ -30,11 +30,11 @@ export const renderTasks = () => {
       textElem.classList.add('text');
       textElem.textContent = text;
 
-      const deleteBtnElem = document.createElement('button');
-      deleteBtnElem.classList.add('delete__btn');
-      deleteBtnElem.dataset.id = id;
+      const delBtnElem = document.createElement('button');
+      delBtnElem.classList.add('delete__btn');
+      delBtnElem.dataset.id = id;
 
-      listItemElem.append(checkbox, text, deleteBtnElem);
+      listItemElem.append(checkbox, text, delBtnElem);
 
       return listItemElem;
     });

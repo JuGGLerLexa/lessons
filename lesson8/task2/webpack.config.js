@@ -1,45 +1,48 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const webpack = require('webpack');
 
 module.exports = (env, argv) => {
-    const isProduction = argv.mode === "production";
+    const isProduction = argv.mode === 'production';
     const config = {
-        entry: "./src/index.js",
+        entry: './src/index.js',
         output: {
-            filename: "bundle.js",
+            filename: 'bundle.js',
         },
         module: {
             rules: [
                 {
+                    test: /.js$/i,
+                    use: ['babel-loader'],
+                },
+                {
                     test: /.s?css$/,
                     use: [
-                        isProducton ? MiniCssExtractPlugin.loader : "style-loader",
-                        "css-loader",
-                        "sass-loader",
+                        isProduction
+                            ? MiniCssExtractPlugin.loader
+                            : 'style-loader',
+                        'css-loader',
+                        'sass-loader'
                     ],
                 },
                 {
-                    test: /.js$/,
-                    use: ["babel-loader"],
-                },
-                {
-                    test: /.(jpg|png)$/,
+                    test: /.(jpg|png)$/i,
                     use: [
                         {
-                            loader: "url-loader",
+                            loader: 'url-loader',
                             options: {
                                 limit: 8192,
-                                name: "[name].ext",
-                                outputPath: "images",
+                                name: '[name].[ext]',
+                                outputPath: 'images',
                             },
-
                         },
                     ],
                 },
             ],
         },
         plugins: [
+            new webpack.ProgressPlugin(),
             new CleanWebpackPlugin(),
             new HtmlWebpackPlugin({
                 template: './src/index.html'
@@ -47,16 +50,15 @@ module.exports = (env, argv) => {
         ],
         devServer: {
             port: 9000,
-            hot: true,
-        },
+            hot: true
+        }
     };
 
     if (isProduction) {
-        config.plugins.push(
-            new MiniCssExtractPlugin({
-                filename: "[name].css",
-            })
-        );
+        config.plugins.push(new MiniCssExtractPlugin({
+            filename: '[name].css',
+        }));
     }
+
     return config;
 };
